@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="button_bg">#7C7499</color>
+    <color name="mainText">#3C5E39</color>
+    <color name="secondaryText">#617C5F</color>
+    <color name="lightGreen">#889C87</color>
+    <color name="blue">#4285f4</color>
+    <color name="green">#34a853</color>
+    <color name="yelllo">#fbbc05</color>
+    <color name="red">#ea4335</color>
+    <color name="walletGreen">#D2DDBF</color>
+    <color name="greyText">#B8B8B8</color>
+    <color name="languageTvBg">#F2F4F2</color>
+    <color name="tealGreen">#78906E</color>
+    <color name="blackOpacq">#7A000000</color>
+    <color name="musturdYellow">#EAB308</color>
+
+    <color name="yellow">#FFFF00</color>
+
+
+</resources>

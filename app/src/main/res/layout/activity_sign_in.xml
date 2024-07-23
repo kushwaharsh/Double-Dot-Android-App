@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg_img"
+    tools:context=".activity.auth.SignInActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic__main_double_dot"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_frame_style"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/backBtnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_back_arrow_btn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/segoe_ui"
+                android:text="@string/login"
+                android:textColor="@color/mainText"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/mainText"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="@string/welcome"
+            android:layout_marginTop="20dp"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/segoe_ui"
+            android:textColor="@color/secondaryText"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/please_put_your_number_below_to_login_into_the_account"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_ui_semibold"
+            android:text="@string/mobile_number"
+            android:textColor="@color/mainText"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="40dp"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/edittext_style"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/country_code"
+            app:ccp_defaultNameCode="IND"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_showFlag="true"
+            app:ccp_showNameCode="false"
+            app:ccp_showFullName="false"
+            app:ccp_showPhoneCode="false"
+            android:gravity="center">
+        </com.hbb20.CountryCodePicker>
+            <EditText
+                android:id="@+id/mobNoLogin"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:maxLength="10"
+                android:ems="10"
+                android:textStyle="bold"
+                android:background="@null"
+                android:paddingStart="20dp"
+                android:textSize="20sp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/button_bg"
+                android:hint="@string/enter_your_mobile_no"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/continueLoginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/button_style"
+            android:backgroundTint="@color/button_bg"
+            android:text="Continue"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/grass_img" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

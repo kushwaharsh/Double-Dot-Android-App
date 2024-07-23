@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    android:orientation="vertical"
+    android:background="@drawable/secondary_background"
+    tools:context=".activity.auth.AuthSuccessActivity">
+
+    <ImageView
+        android:id="@+id/crossBtn"
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_cross_btn"/>
+
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/ic_login_congo" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="Congratulations"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Your account has been created. Successfully."
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/segoe_ui"
+        android:textColor="@color/white"
+        android:textAlignment="center"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/goToHomeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:fontFamily="@font/segoe_ui_semibold"
+        android:textSize="18sp"
+        android:text="Go to Home"
+        android:textColor="@color/button_bg"
+        android:background="@drawable/edittext_style"
+        android:layout_gravity="bottom"/>
+
+</LinearLayout>

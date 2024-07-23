@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg_img"
+    tools:context=".activity.auth.SignInMobOTPActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic__main_double_dot"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_frame_style"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/backtoLoginBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_back_arrow_btn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/segoe_ui"
+                android:text="OTP"
+                android:textColor="@color/mainText"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/mainText"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="OTP Verification"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/displayCountryCodeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/mainText"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:text="+91"
+                android:textSize="20sp" />
+        <TextView
+            android:id="@+id/displayMobNoTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/mainText"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="99 9785 9897"
+            android:textSize="20sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/segoe_ui"
+            android:textColor="@color/secondaryText"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:text="We've sent a 4 digit code to your phone number. Please enter the verification code."
+            android:textAlignment="center"
+            android:textSize="15sp" />
+
+
+            <com.chaos.view.PinView
+                android:id="@+id/mobileOtpPinView"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:cursorVisible="true"
+                android:inputType="phone"
+                android:textColor="@color/button_bg"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cursorColor="@color/button_bg"
+                app:cursorWidth="2dp"
+                app:hideLineWhenFilled="false"
+                app:itemCount="6"
+                app:itemRadius="8dp"
+                app:itemSpacing="10dp"
+                app:lineColor="@color/button_bg"
+                app:lineWidth="2dp"
+                app:viewType="rectangle"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="20dp"/>
+
+        <LinearLayout
+            android:id="@+id/timerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/lightGreen"
+                android:fontFamily="@font/segoe_ui"
+                android:text="Request new code in"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/countDownTimerTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/lightGreen"
+                android:fontFamily="@font/segoe_ui"
+                android:text="04:15"
+                android:textSize="18sp"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resendLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/mainText"
+                android:fontFamily="@font/segoe_ui_semibold"
+                android:text="Did you don’t get code?"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/resendOtpBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/button_bg"
+                android:fontFamily="@font/segoe_ui_semibold"
+                android:text="Resend"
+                android:textSize="18sp"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/grass_img" />
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

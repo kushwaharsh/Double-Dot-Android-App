@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="40dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/expertImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/dummy_img" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="bottom"
+                        android:background="@color/blackOpacq"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/expertRatingTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:drawablePadding="5dp"
+                            android:gravity="center"
+                            android:text="3.0"
+                            android:textColor="@color/musturdYellow"
+                            android:textSize="18sp"
+                            app:drawableLeftCompat="@drawable/ic_star" />
+
+                    </LinearLayout>
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/expertNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Abram George"
+                    android:textColor="@color/mainText"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/expertExpertiseFeild"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/solid_leaf_icon"
+                    android:drawablePadding="2dp"
+                    android:fontFamily="@font/segoe_ui_semibold"
+                    android:text="Anxiety Expert"
+                    android:textColor="@color/mainText"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/segoe_ui"
+                        android:text="Sessions :"
+                        android:textColor="@color/mainText"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/expertSessionsCountTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/segoe_ui_semibold"
+                        android:text="36"
+                        android:textColor="@color/mainText"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/expertLanguageTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/edittext_style"
+                    android:backgroundTint="@color/languageTvBg"
+                    android:drawableLeft="@drawable/language_icon"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/segoe_ui_semibold"
+                    android:padding="1dp"
+                    android:paddingStart="10dp"
+                    android:text="English, Hindi &amp; Tamil"
+                    android:textColor="@color/mainText"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/expertDiscountedConsultationFee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_rupee"
+                            android:fontFamily="@font/segoe_ui_bold"
+                            android:text="20/"
+                            android:textColor="@color/mainText"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/segoe_ui"
+                            android:text="min"
+                            android:textColor="@color/mainText"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/expertConsultationFee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_rupee_small"
+                            android:fontFamily="@font/segoe_ui_bold"
+                            android:text="10/"
+                            android:textColor="@color/tealGreen"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/segoe_ui"
+                            android:text="min"
+                            android:textColor="@color/tealGreen"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/callBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:elevation="100dp"
+        android:src="@drawable/ic_phone"
+        app:layout_constraintBottom_toBottomOf="@+id/cardview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardview" />
+
+    <ImageView
+        android:id="@+id/bellBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:elevation="100dp"
+        android:src="@drawable/bell_icon"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/cardview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardview" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
