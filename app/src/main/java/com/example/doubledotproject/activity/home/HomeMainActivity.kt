@@ -5,20 +5,21 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.doubledotproject.R
 import com.example.doubledotproject.activity.home.adapters.HomeViewPagerAdapter
-import com.example.doubledotproject.databinding.ActivityHomeBinding
+import com.example.doubledotproject.databinding.ActivityHomeMainBinding
 import com.yarolegovich.slidingrootnav.SlideGravity
 import com.yarolegovich.slidingrootnav.SlidingRootNav
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
 import com.yarolegovich.slidingrootnav.callback.DragListener
+import com.yarolegovich.slidingrootnav.callback.DragStateListener
 
 class HomeMainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivityHomeMainBinding
     private lateinit var viewPager: CustomViewPager
     private var slidingRootNav: SlidingRootNav? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivityHomeMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Initialize ViewPager
@@ -27,15 +28,15 @@ class HomeMainActivity : AppCompatActivity() {
         viewPager.setPagingEnabled(false)
 
         slidingRootNav = SlidingRootNavBuilder(this)
-            .withMenuOpened(false)
+            .withMenuOpened(false)  // Initial state of the menu
             .withContentClickableWhenMenuOpened(true)
             .withSavedState(savedInstanceState)
-            //.withRootViewElevation(7)
-            .withDragDistance(200)
-            .withRootViewScale(0.8f)
-            .withRootViewElevation(10)
-            .withGravity(SlideGravity.RIGHT)
-            .withMenuLayout(R.layout.drawer_layout)
+            .withDragDistance(200)  // Distance for dragging
+            .withRootViewScale(0.8f)  // Scale of the root view
+            .withRootViewElevation(10)  // Elevation of the root view
+            .withGravity(SlideGravity.RIGHT)  // Direction of the sliding menu
+            .addRootTransformation(CustomRootTransformation())
+            .withMenuLayout(R.layout.drawer_layout)  // Layout of the menu
             .addDragListener(object : DragListener {
                 override fun onDrag(progress: Float) {
                     // Detect when drawer is closed
@@ -45,6 +46,16 @@ class HomeMainActivity : AppCompatActivity() {
                     }
                 }
             })
+//            .addDragStateListener(object : DragStateListener {
+//                override fun onDragStart() {
+//                    // Optionally handle drag start
+//                }
+//
+//                override fun onDragEnd(isMenuOpened: Boolean) {
+//                    // Update background based on drawer state
+//                    updateBackground(isMenuOpened)
+//                }
+//            })
             .inject()
 
         setupListeners()
@@ -94,4 +105,14 @@ class HomeMainActivity : AppCompatActivity() {
             }
         }
     }
+
+//    private fun updateBackground(isDrawerOpen: Boolean) {
+//        if (isDrawerOpen) {
+//            // Drawer is open, set drawable as background
+//            binding.root.setBackgroundResource(R.drawable.corner_style_overlay)
+//        } else {
+//            // Drawer is closed, set image as background
+//            binding.root.setBackgroundResource(R.drawable.home_screen_bg)
+//        }
+//    }
 }
