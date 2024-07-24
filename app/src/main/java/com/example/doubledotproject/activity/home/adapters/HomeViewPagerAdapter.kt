@@ -13,10 +13,9 @@ class HomeViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAV
         return when (position) {
             0 -> HomeFragment()
             1 -> HistoryFragment()
-            2 -> ProfileFragment()
             else -> throw IllegalStateException("Unexpected position $position")
         }
     }
 
-    override fun getCount(): Int = 3
+    override fun getCount(): Int = 2
 }

@@ -1,5 +1,6 @@
 package com.example.doubledotproject.activity.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -71,11 +72,13 @@ class HomeFragment : Fragment() {
 
     private fun listener() {
 
+        binding.filtersBtn.setOnClickListener {
+            startActivity(Intent(requireContext() , FiltersActivity::class.java))
+        }
+
     }
 
     private fun initview(){
-
-
         binding.homeFragmentRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = HomeRecyclerViewAdapter(arrayList) // Initialize with empty list
         binding.homeFragmentRecyclerView.adapter = adapter

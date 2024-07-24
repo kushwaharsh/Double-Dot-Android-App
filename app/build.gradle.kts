@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+//    implementation(libs.androidx.runtime.saved.instance.state)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -82,6 +83,12 @@ dependencies {
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
     //glide Dependency
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    //duo navigation drawer dependency for sliding drawer
+    implementation ("com.yarolegovich:sliding-root-nav:1.1.1")
+    //circular image view dependency
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    //Material dependency
+
 
 
 }
