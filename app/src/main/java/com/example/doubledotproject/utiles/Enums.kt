@@ -9,5 +9,6 @@ enum class Enums {
     LoginUserData,
     FullName,
     Email,
-    Location
+    Location,
+    ClickedExpertData
 }

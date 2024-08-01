@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.doubledotproject.activity.home.HistoryFragment
 import com.example.doubledotproject.activity.home.HomeFragment
-import com.example.doubledotproject.activity.home.ProfileFragment
 
 class HomeViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 

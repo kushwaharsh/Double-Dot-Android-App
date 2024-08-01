@@ -1,7 +1,9 @@
 package com.example.doubledotproject.activity.home
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,23 +18,26 @@ import com.example.doubledotproject.apiResponse.Data
 import com.example.doubledotproject.apiResponse.GetExpertListResponse
 import com.example.doubledotproject.databinding.FragmentHomeBinding
 import com.example.doubledotproject.utiles.App
+import com.example.doubledotproject.utiles.Enums
 import com.example.doubledotproject.utiles.KeyConstants
 import com.example.doubledotproject.utiles.ProgressBarUtils
 import com.example.doubledotproject.utiles.Resource
 import com.example.doubledotproject.viewModels.HomeViewModel
+import com.google.gson.Gson
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapter: HomeRecyclerViewAdapter
+    private lateinit var sharedPreferences: SharedPreferences
     lateinit var recyclerView: RecyclerView
     var arrayList = ArrayList<Data>()
-    private val viewModel : HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater , container , false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        Log.e("token", App.app.prefManager.logginUserData.jwtToken)
         initview()
         observer()
         listener()
@@ -42,28 +47,37 @@ class HomeFragment : Fragment() {
     }
 
     private fun observer() {
-        viewModel.getExpertListData.observe(viewLifecycleOwner){
-            when(it){
+        viewModel.getExpertListData.observe(viewLifecycleOwner) {
+            when (it) {
                 is Resource.Loading -> {
                     ProgressBarUtils.showProgressDialog(requireContext())
                 }
+
                 is Resource.Success -> {
-                    if (it.value?.code == KeyConstants.SUCCESS){
+                    if (it.value?.code == KeyConstants.SUCCESS) {
                         ProgressBarUtils.hideProgressDialog()
 
                         arrayList = it.value.data as ArrayList<Data>
                         adapter.setNewList(arrayList)
-                    }else{
+                    } else {
                         ProgressBarUtils.hideProgressDialog()
-                        Toast.makeText(requireContext() , "Error While Fetching Data" , Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(), "Error While Fetching Data", Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
+
                 is Resource.Failure -> {
                     ProgressBarUtils.hideProgressDialog()
-                    Toast.makeText(requireContext() , "Opps! Something Went Wrong" , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), "Opps! Something Went Wrong", Toast.LENGTH_SHORT
+                    ).show()
                 }
+
                 else -> {
-                    Toast.makeText(requireContext() , "Error While fetching Data" , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), "Error While fetching Data", Toast.LENGTH_SHORT
+                    ).show()
 
                 }
             }
@@ -73,17 +87,28 @@ class HomeFragment : Fragment() {
     private fun listener() {
 
         binding.filtersBtn.setOnClickListener {
-            startActivity(Intent(requireContext() , FiltersActivity::class.java))
+            startActivity(Intent(requireContext(), FiltersActivity::class.java))
         }
 
     }
 
-    private fun initview(){
+    private fun initview() {
         binding.homeFragmentRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = HomeRecyclerViewAdapter(arrayList) // Initialize with empty list
+        adapter = HomeRecyclerViewAdapter(arrayList) { position ->
+            val expertData = arrayList[position]
+            val clickedExpertId = expertData._id
+            val intent = Intent(requireContext(), ExperDetailsActivity::class.java).apply {
+                putExtra("ClickedExpertId", clickedExpertId)
+            }
+            startActivity(intent)
+        }// Initialize with empty list
         binding.homeFragmentRecyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 
         viewModel.getExpertData(App.app.prefManager.logginUserData.jwtToken.toString())
+
+        binding.userNameTV.text = App.app.prefManager.logginUserData.fullName
+        binding.walletBalanceTV.text = App.app.prefManager.logginUserData.walletBalance
+
     }
-    }
+}

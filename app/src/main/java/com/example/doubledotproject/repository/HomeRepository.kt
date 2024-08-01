@@ -9,4 +9,7 @@ object HomeRepository : BaseRepository() {
     suspend fun getExpertList(token: String) = safeApiCall {
         ServiceHelper().getApi().getExpertList(token)
     }
+    suspend fun getExpertData(token : String , expertId : String) = safeApiCall {
+        ServiceHelper().getApi().getExpertDetails(token , expertId)
+    }
 }

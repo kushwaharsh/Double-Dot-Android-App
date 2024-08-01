@@ -4,12 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.doubledotproject.R
 import com.example.doubledotproject.apiResponse.Data
-import com.example.doubledotproject.apiResponse.GetExpertListResponse
 import com.example.doubledotproject.databinding.HomeRecyclerviewEachItemBinding
 
-class HomeRecyclerViewAdapter (private var expertListData: List<Data>) : RecyclerView.Adapter<HomeRecyclerViewAdapter.MyViewHolder>() {
+class HomeRecyclerViewAdapter (private var expertListData: List<Data>,val clickListner:(Int)->Unit) : RecyclerView.Adapter<HomeRecyclerViewAdapter.MyViewHolder>() {
 
     fun setNewList(newList: ArrayList<Data>){
         this.expertListData = newList
@@ -23,14 +21,14 @@ class HomeRecyclerViewAdapter (private var expertListData: List<Data>) : Recycle
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val expert = expertListData[position]
-        holder.bind(expert)
+        holder.bind(expert , position)
     }
 
     override fun getItemCount(): Int = expertListData.size
 
     inner class MyViewHolder(private val binding: HomeRecyclerviewEachItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(expertData: Data) {
+        fun bind(expertData: Data, position: Int) {
             // Load image using Glide or other image loading libraries
             Glide.with(binding.expertImage.context)
                 .load(expertData.image)
@@ -44,6 +42,10 @@ class HomeRecyclerViewAdapter (private var expertListData: List<Data>) : Recycle
             binding.expertConsultationFee.text = "${expertData.consultationFee}/"
             val ratingData = String.format("%.1f", expertData.rating.toFloat())
             binding.expertRatingTV.text = ratingData
+
+            itemView.setOnClickListener{
+                clickListner.invoke(position)
+            }
 
         }
     }

@@ -17,12 +17,34 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.drawer.ContactUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.drawer.MyProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.drawer.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.drawer.TermsAndConditionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.drawer.AboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.home.ExpertReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.home.ExperDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.home.FiltersActivity"
             android:exported="false"
             android:theme="@style/Theme.DoubleDotProject" />
         <activity
             android:name=".activity.home.HomeMainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.auth.AuthSuccessActivity"
             android:exported="false" />

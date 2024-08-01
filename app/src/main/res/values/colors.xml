@@ -18,6 +18,9 @@
     <color name="musturdYellow">#EAB308</color>
     <color name="yellow">#FFFF00</color>
     <color name="phoneGreen">#C6D1C2</color>
+    <color name="transparent_color">#00000000</color>
+    <color name="border_white">#66FFFFFF</color>
+
 
 
 </resources>

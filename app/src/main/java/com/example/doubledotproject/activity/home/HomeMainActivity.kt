@@ -46,16 +46,6 @@ class HomeMainActivity : AppCompatActivity() {
                     }
                 }
             })
-//            .addDragStateListener(object : DragStateListener {
-//                override fun onDragStart() {
-//                    // Optionally handle drag start
-//                }
-//
-//                override fun onDragEnd(isMenuOpened: Boolean) {
-//                    // Update background based on drawer state
-//                    updateBackground(isMenuOpened)
-//                }
-//            })
             .inject()
 
         setupListeners()

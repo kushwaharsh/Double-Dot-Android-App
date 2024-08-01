@@ -93,7 +93,8 @@
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="Search..."
+                android:hint="Search..."
+                android:inputType="text"
                 android:background="@color/white"
                 android:textColor="@color/greyText"
                 android:paddingStart="10dp"

@@ -11,5 +11,6 @@ object KeyConstants {
     const val LOGIN_WITH_MOB = "customer/login"
     const val RESEND_MOB_OTP = "customer/sent_otp"
     const val SIGN_UP_USER = "customer/register"
-    const val GET_EXPERT_LIST = "customer/expert/list?search=TEST"
+    const val GET_EXPERT_LIST = "customer/expert/list"
+    const val GET_EXPERT_DETAILS = "customer/expert/detail"
 }
