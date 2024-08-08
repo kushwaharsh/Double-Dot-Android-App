@@ -17,4 +17,7 @@ object KeyConstants {
     const val ADD_AMOUNT_TO_WALLET = "customer/wallet/add_amount"
     const val GET_WALLET_AMOUNT = "customer/wallet/amount"
     const val EDIT_USER_PROFILE = "customer/update"
+    const val STATIC_CONTENT_DETAILS = "customer/static/detail"
+    const val LOGOUT_USER = "customer/logout"
+    const val DELETE_ACCOUNT_USER = "customer/delete"
 }

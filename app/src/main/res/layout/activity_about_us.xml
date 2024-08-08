@@ -51,6 +51,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/titleTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/segoe_ui_bold"
@@ -59,6 +60,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/contentTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"

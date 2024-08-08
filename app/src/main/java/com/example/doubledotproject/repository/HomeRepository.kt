@@ -24,4 +24,20 @@ object HomeRepository : BaseRepository() {
     suspend fun getWalletAmount(token: String) = safeApiCall {
         ServiceHelper().getApi().getWalletAmount(token)
     }
+
+    suspend fun editUserProfile(token: String , param: HashMap<String, Any>) = safeApiCall {
+        ServiceHelper().getApi().editUserProfile(token , param)
+    }
+
+    suspend fun staticContentDetails(type : String) = safeApiCall {
+        ServiceHelper().getApi().staticContentDetails(type)
+    }
+
+    suspend fun deleteUserAccount (token: String) = safeApiCall {
+        ServiceHelper().getApi().deleteUserAccount(token)
+    }
+
+    suspend fun logoutUser(token: String) = safeApiCall {
+        ServiceHelper().getApi().logoutUser(token)
+    }
 }

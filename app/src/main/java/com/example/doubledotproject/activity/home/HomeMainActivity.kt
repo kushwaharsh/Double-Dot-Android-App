@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -25,6 +27,9 @@ import com.example.doubledotproject.databinding.DrawerLayoutBinding
 import com.example.doubledotproject.localDatabase.PrefManager
 import com.example.doubledotproject.utiles.App
 import com.example.doubledotproject.utiles.KeyConstants
+import com.example.doubledotproject.utiles.ProgressBarUtils
+import com.example.doubledotproject.utiles.Resource
+import com.example.doubledotproject.viewModels.HomeViewModel
 import com.yarolegovich.slidingrootnav.SlideGravity
 import com.yarolegovich.slidingrootnav.SlidingRootNav
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
@@ -35,6 +40,7 @@ class HomeMainActivity : AppCompatActivity() {
     private lateinit var viewPager: CustomViewPager
     private var slidingRootNav: SlidingRootNav? = null
     private lateinit var drawerBinding: DrawerLayoutBinding
+    private val viewModel : HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,9 +78,39 @@ class HomeMainActivity : AppCompatActivity() {
         val drawerView = slidingRootNav!!.layout.findViewById<View>(R.id.drawer_layout_root)
         drawerBinding = DrawerLayoutBinding.bind(drawerView)
 
+        observer()
         setupDrawerListeners()
         setupListeners()
         updateIcons(0)
+    }
+
+    private fun observer() {
+        viewModel.logoutUserAccount.observe(this){
+            when(it){
+                Resource.Loading -> {
+                    ProgressBarUtils.showProgressDialog(this)
+                }
+                is Resource.Success -> {
+                    ProgressBarUtils.hideProgressDialog()
+                    if (it.value?.code == KeyConstants.SUCCESS){
+                        val prefManager = PrefManager.get(this)
+                        prefManager.clearPreferences()
+                        val intent = Intent(this, SignInActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        startActivity(intent)
+                        finish()
+                    }
+                    else{
+                        Toast.makeText(this ,"Opps! Error While Fetching Data" , Toast.LENGTH_SHORT).show()
+                    }
+                }
+                is Resource.Failure -> {
+                    Toast.makeText(this ,"Something Went Wrong" , Toast.LENGTH_SHORT).show()
+
+                }
+                else -> {}
+            }
+        }
     }
 
     private fun setupDrawerListeners() {
@@ -121,12 +157,7 @@ class HomeMainActivity : AppCompatActivity() {
                 logoutDialog.dismiss()
             }
             dialogBinding.btnConfirm.setOnClickListener {
-                val prefManager = PrefManager.get(this)
-                prefManager.clearPreferences()
-                val intent = Intent(this, SignInActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-                startActivity(intent)
-                finish()
+                viewModel.logoutUser(App.app.prefManager.logginUserData.jwtToken)
                 logoutDialog.dismiss()
             }
             logoutDialog.show()

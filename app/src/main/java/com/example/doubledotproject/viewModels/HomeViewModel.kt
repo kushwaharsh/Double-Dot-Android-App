@@ -5,9 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.doubledotproject.apiResponse.AddAmonuntToWalletResponseModel
+import com.example.doubledotproject.apiResponse.AuthResponseModel
+import com.example.doubledotproject.apiResponse.EditUserProfileResponseModel
 import com.example.doubledotproject.apiResponse.ExpertDetailsResponse
 import com.example.doubledotproject.apiResponse.GetExpertListResponse
 import com.example.doubledotproject.apiResponse.GetWalletAmount
+import com.example.doubledotproject.apiResponse.OTPResponse
+import com.example.doubledotproject.apiResponse.StaticContentResponseModel
 import com.example.doubledotproject.apiResponse.WalletTransactionResponseModel
 import com.example.doubledotproject.repository.HomeRepository
 import com.example.doubledotproject.utiles.Resource
@@ -43,6 +47,7 @@ class HomeViewModel : ViewModel() {
         MutableLiveData()
     val getWalletDetailsData: LiveData<Resource<WalletTransactionResponseModel?>?>
         get() = _getWalletDetailsData
+
     fun getWalletTransactionDetails(token: String) {
         viewModelScope.launch {
             _getWalletDetailsData.value = Resource.Loading
@@ -54,6 +59,7 @@ class HomeViewModel : ViewModel() {
         MutableLiveData()
     val addAmountToWallet: LiveData<Resource<AddAmonuntToWalletResponseModel?>?>
         get() = _addAmountToWallet
+
     fun addAmountToWallet(token: String, body: HashMap<String, Int>) {
         viewModelScope.launch {
             _addAmountToWallet.value = Resource.Loading
@@ -61,14 +67,60 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    private val _getWalletTotalAmount : MutableLiveData<Resource<GetWalletAmount?>?> = MutableLiveData()
-    val getWalletTotalAmount : LiveData<Resource<GetWalletAmount?>?>
+    private val _getWalletTotalAmount: MutableLiveData<Resource<GetWalletAmount?>?> =
+        MutableLiveData()
+    val getWalletTotalAmount: LiveData<Resource<GetWalletAmount?>?>
         get() = _getWalletTotalAmount
 
-    fun getWalletAmount(token: String){
+    fun getWalletAmount(token: String) {
         viewModelScope.launch {
             _getWalletTotalAmount.value = Resource.Loading
             _getWalletTotalAmount.value = HomeRepository.getWalletAmount(token)
+        }
+    }
+
+    private val _editedUserProfileData: MutableLiveData<Resource<EditUserProfileResponseModel?>?> =
+        MutableLiveData()
+    val editedUserProfileData: LiveData<Resource<EditUserProfileResponseModel?>?>
+        get() = _editedUserProfileData
+
+    fun editUserProfile(token: String, param: HashMap<String, Any>) {
+        viewModelScope.launch {
+            _editedUserProfileData.value = Resource.Loading
+            _editedUserProfileData.value = HomeRepository.editUserProfile(token, param)
+        }
+    }
+
+    private val _staticContentData : MutableLiveData<Resource<StaticContentResponseModel?>?> = MutableLiveData()
+    val staticContentData : LiveData<Resource<StaticContentResponseModel?>?>
+        get() = _staticContentData
+
+    fun staticContentDetails(type : String){
+        viewModelScope.launch {
+            _staticContentData.value = Resource.Loading
+            _staticContentData.value = HomeRepository.staticContentDetails(type)
+        }
+    }
+
+    private val _deleteAccountUser : MutableLiveData<Resource<OTPResponse?>?> = MutableLiveData()
+    val deleteAccountUser : LiveData<Resource<OTPResponse?>?>
+        get() = _deleteAccountUser
+
+    fun deleteUserAccount(token: String){
+        viewModelScope.launch {
+            _deleteAccountUser.value = Resource.Loading
+            _deleteAccountUser.value = HomeRepository.deleteUserAccount(token)
+        }
+    }
+
+    private val _logoutUserAccount : MutableLiveData<Resource<AuthResponseModel?>?> = MutableLiveData()
+    val logoutUserAccount : LiveData<Resource<AuthResponseModel?>?>
+        get() = _logoutUserAccount
+
+    fun logoutUser(token: String){
+        viewModelScope.launch {
+            _logoutUserAccount.value = Resource.Loading
+            _logoutUserAccount.value = HomeRepository.logoutUser(token)
         }
     }
 }

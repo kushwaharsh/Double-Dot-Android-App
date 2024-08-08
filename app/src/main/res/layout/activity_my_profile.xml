@@ -55,7 +55,8 @@
             android:background="@drawable/circular_style"/>
 
         <ImageView
-            android:id="@+id/editProfileImage"
+            android:id="@+id/icEditProfileImage"
+            android:visibility="gone"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="end|bottom"
@@ -156,6 +157,7 @@
                     android:fontFamily="@font/segoe_ui_semibold"
                     android:hint="Edit your Phone Number"
                     android:padding="2dp"
+                    android:enabled="false"
                     android:inputType="phone"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"

@@ -2,11 +2,13 @@ package com.example.doubledotproject.network
 
 import com.example.doubledotproject.apiResponse.AddAmonuntToWalletResponseModel
 import com.example.doubledotproject.apiResponse.AuthResponseModel
+import com.example.doubledotproject.apiResponse.EditUserProfileResponseModel
 import com.example.doubledotproject.apiResponse.ExpertDetailsResponse
 import com.example.doubledotproject.apiResponse.GetExpertListResponse
 import com.example.doubledotproject.apiResponse.GetWalletAmount
 import com.example.doubledotproject.apiResponse.LoginData
 import com.example.doubledotproject.apiResponse.OTPResponse
+import com.example.doubledotproject.apiResponse.StaticContentResponseModel
 import com.example.doubledotproject.apiResponse.WalletTransactionResponseModel
 import com.example.doubledotproject.utiles.KeyConstants
 import retrofit2.Response
@@ -49,9 +51,20 @@ interface ApiService {
     ): AddAmonuntToWalletResponseModel?
 
     @GET(KeyConstants.GET_WALLET_AMOUNT)
-    suspend fun getWalletAmount(@Header("Authorization") token: String) : GetWalletAmount?
+    suspend fun getWalletAmount(@Header("Authorization") token: String): GetWalletAmount?
 
     @PATCH(KeyConstants.EDIT_USER_PROFILE)
-    suspend fun editUserProfile(@Header("Authorization") token: String,
-                                @Body data: HashMap<String, String>)
+    suspend fun editUserProfile(
+        @Header("Authorization") token: String,
+        @Body data: HashMap<String, Any>
+    ): EditUserProfileResponseModel?
+
+    @GET(KeyConstants.STATIC_CONTENT_DETAILS)
+    suspend fun staticContentDetails (@Query ("type") type : String) : StaticContentResponseModel?
+
+    @POST(KeyConstants.DELETE_ACCOUNT_USER)
+    suspend fun deleteUserAccount(@Header("Authorization") token: String) : OTPResponse?
+
+    @GET(KeyConstants.LOGOUT_USER)
+    suspend fun logoutUser(@Header("Authorization") token: String) : AuthResponseModel?
 }
