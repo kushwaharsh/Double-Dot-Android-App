@@ -20,7 +20,12 @@
     <color name="phoneGreen">#C6D1C2</color>
     <color name="transparent_color">#00000000</color>
     <color name="border_white">#66FFFFFF</color>
+    <color name="dialog_button_green">#37CF29</color>
+    <color name="dialog_button_disabled_grey">#DDDDDD</color>
 
+
+    <color name="color_debit">#FF3A3A</color>
+    <color name="color_credit">#37CF29</color>
 
 
 </resources>

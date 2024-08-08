@@ -55,16 +55,19 @@
 
             <TextView
                 android:id="@+id/walletBalanceTV"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:padding="8dp"
-                android:drawablePadding="5dp"
+                android:minWidth="100dp"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:drawablePadding="2dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:background="@drawable/wallet_textview_style"
                 android:layout_alignParentEnd="true"
-                android:text="₹ 2000"
+                android:text="₹0.0"
+                android:textSize="18sp"
                 android:textColor="@color/mainText"
                 android:fontFamily="@font/segoe_ui_semibold"
                 app:drawableStartCompat="@drawable/ic_wallet" />

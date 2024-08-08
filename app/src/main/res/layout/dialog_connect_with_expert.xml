@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/crossBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_cross_btn" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="410dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dialog_box_style"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="100dp"
+                android:src="@drawable/ic_green_dot"
+                app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+                app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/user_1_img"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/expertRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_style"
+                android:drawableStart="@drawable/ic_star"
+                android:drawablePadding="5dp"
+                android:padding="8dp"
+                android:text="4.2"
+                android:textColor="@color/yelllo"
+                android:textSize="18sp"
+                android:translationZ="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+                app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+                app:layout_constraintStart_toStartOf="@+id/circleImageView"
+                app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/expertName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/constraintLayout"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:maxLines="1"
+            android:text="Abram George"
+            android:textColor="@color/mainText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/expertExpertiseFeild"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/expertName"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="1dp"
+            android:drawablePadding="3dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/segoe_ui_semibold"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Abram George"
+            android:textColor="@color/mainText"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/solid_leaf_icon" />
+
+        <FrameLayout
+            android:id="@+id/audioCallBtn"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/videoCallBtn"
+            android:backgroundTint="@color/dialog_button_disabled_grey"
+            android:background="@drawable/dialog_button_style">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_dialog_call"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/segoe_ui_semibold"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:text="Audio Call"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/videoCallBtn"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/chatBtn"
+            android:backgroundTint="@color/dialog_button_disabled_grey"
+            android:background="@drawable/dialog_button_style">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_dialog_video"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/segoe_ui_semibold"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:text="Video Call"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/chatBtn"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/dialog_button_border_style">
+            <ImageView
+                android:id="@+id/chatDefaultIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:tint="@color/dialog_button_disabled_grey"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_dialog_message"/>
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/chatActiveIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_dialog_message"/>
+            <TextView
+                android:id="@+id/chatDefaultText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/segoe_ui_semibold"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/dialog_button_disabled_grey"
+                android:text="Chat"/>
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/chatActiveText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/segoe_ui_semibold"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/button_bg"
+                android:text="Chat"/>
+        </FrameLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>

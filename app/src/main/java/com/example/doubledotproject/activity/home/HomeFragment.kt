@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.doubledotproject.R
+import com.example.doubledotproject.activity.drawer.WalletActivity
 import com.example.doubledotproject.activity.home.adapters.HomeRecyclerViewAdapter
 import com.example.doubledotproject.apiResponse.Data
 import com.example.doubledotproject.apiResponse.GetExpertListResponse
@@ -82,12 +83,47 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+
+        //Observer for wallet amount
+        viewModel.getWalletTotalAmount.observe(viewLifecycleOwner){
+            when(it){
+                Resource.Loading -> {
+                    ProgressBarUtils.showProgressDialog(requireContext())
+                }
+                is Resource.Success -> {
+                    ProgressBarUtils.hideProgressDialog()
+                    if (it.value?.code == KeyConstants.SUCCESS){
+
+                        it.value.data?.currentAmount?.amount?.let { amount ->
+                            val currentWalletAmount = amount.toString()
+                            binding.walletBalanceTV.text = "₹${currentWalletAmount}"
+                            App.app.prefManager.WalletCurrentData = currentWalletAmount
+                        } ?: run {
+                            // Handle the case where amount is null
+                            binding.walletBalanceTV.text = "₹ 0.0"
+                            App.app.prefManager.WalletCurrentData = "0.0"
+                        }
+
+                    }
+                }
+                is Resource.Failure -> {
+                    ProgressBarUtils.hideProgressDialog()
+                    Toast.makeText(requireContext() , "Opps! Something Went Wrong" , Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    Toast.makeText(requireContext() , "Erreo while fetching data" , Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun listener() {
 
         binding.filtersBtn.setOnClickListener {
             startActivity(Intent(requireContext(), FiltersActivity::class.java))
+        }
+        binding.walletBalanceTV.setOnClickListener {
+            startActivity(Intent(requireContext() , WalletActivity::class.java))
         }
 
     }
@@ -105,10 +141,13 @@ class HomeFragment : Fragment() {
         binding.homeFragmentRecyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 
-        viewModel.getExpertData(App.app.prefManager.logginUserData.jwtToken.toString())
+        viewModel.getExpertData(App.app.prefManager.logginUserData.jwtToken)
 
         binding.userNameTV.text = App.app.prefManager.logginUserData.fullName
-        binding.walletBalanceTV.text = App.app.prefManager.logginUserData.walletBalance
+    }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getWalletAmount(App.app.prefManager.logginUserData.jwtToken)
     }
 }

@@ -1,6 +1,7 @@
 package com.example.doubledotproject.localDatabase
 
 import android.content.Context
+import com.example.doubledotproject.apiResponse.CurrentWalletAmount
 import com.example.doubledotproject.apiResponse.LoginData
 import com.example.doubledotproject.utiles.Enums
 import com.example.doubledotproject.utiles.KeyConstants
@@ -34,6 +35,19 @@ class PrefManager private constructor(private val context: Context){
             editor.putString(Enums.LoginUserData.toString(), json).apply()
         }
 
+    var WalletCurrentData: String
+        get() {
+            val json = sharedPref.getString(Enums.WalletCurrentData.toString(), null)
+            return json ?: "0.0"
+        }
+        set(value) {
+            editor.putString(Enums.WalletCurrentData.toString(), value).apply()
+        }
+
+
+    fun clearPreferences() {
+        editor.clear().apply()
+    }
     companion object {
         fun get(context: Context) = PrefManager(context)
     }

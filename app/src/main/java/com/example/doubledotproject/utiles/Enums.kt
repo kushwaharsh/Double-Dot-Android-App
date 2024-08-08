@@ -7,6 +7,7 @@ enum class Enums {
     OTP,
     CompleteResponseData,
     LoginUserData,
+    WalletCurrentData,
     FullName,
     Email,
     Location,

@@ -14,6 +14,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        renderscriptTargetApi = 25
+        renderscriptSupportModeEnabled = true
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -87,7 +90,8 @@ dependencies {
     implementation ("com.yarolegovich:sliding-root-nav:1.1.1")
     //circular image view dependency
     implementation ("de.hdodenhof:circleimageview:3.1.0")
-    //Material dependency
+    //renderScript for blur dialog effect
+    implementation ("jp.wasabeef:blurry:4.0.0")
 
 
 

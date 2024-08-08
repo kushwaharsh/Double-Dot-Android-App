@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.doubledotproject.R
 import com.example.doubledotproject.apiResponse.Data
 import com.example.doubledotproject.databinding.HomeRecyclerviewEachItemBinding
+import com.example.doubledotproject.utiles.App
 
 class HomeRecyclerViewAdapter (private var expertListData: List<Data>,val clickListner:(Int)->Unit) : RecyclerView.Adapter<HomeRecyclerViewAdapter.MyViewHolder>() {
 
@@ -30,9 +32,28 @@ class HomeRecyclerViewAdapter (private var expertListData: List<Data>,val clickL
 
         fun bind(expertData: Data, position: Int) {
             // Load image using Glide or other image loading libraries
-            Glide.with(binding.expertImage.context)
+           /* Glide.with(binding.expertImage.context)
                 .load(expertData.image)
-                .into(binding.expertImage)
+                .into(binding.expertImage)*/
+
+            when (expertData.gender) {
+                "Male" -> {
+                    Glide.with(binding.expertImage.context)
+                        .load(expertData.image)
+                        .placeholder(R.drawable.male_avatar)
+                        .error(R.drawable.male_avatar)
+                        .into(binding.expertImage)
+                }
+                "Female" -> {
+                    Glide.with(binding.expertImage.context)
+                        .load(expertData.image)
+                        .placeholder(R.drawable.female_avatar)
+                        .error(R.drawable.female_avatar)
+                        .into(binding.expertImage)
+                }
+                else -> {}
+            }
+
 
             binding.expertNameTV.text = expertData.fullName
             binding.expertExpertiseFeild.text = expertData.keywordExpertise.joinToString(", ")

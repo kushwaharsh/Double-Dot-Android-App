@@ -41,19 +41,23 @@
 
                     <TextView
                         android:id="@+id/walletBalanceTV"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
+                        android:gravity="center"
+                        android:minWidth="100dp"
+                        android:padding="10dp"
+                        android:textAlignment="center"
+                        android:drawablePadding="2dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginBottom="2dp"
                         android:background="@drawable/wallet_textview_style"
-                        android:drawablePadding="5dp"
-                        android:fontFamily="@font/segoe_ui_semibold"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text="₹ 2000"
+                        android:layout_alignParentEnd="true"
+                        android:text="₹0.0"
+                        android:textSize="18sp"
                         android:textColor="@color/mainText"
+                        android:fontFamily="@font/segoe_ui_semibold"
                         app:drawableStartCompat="@drawable/ic_wallet" />
+
                 </RelativeLayout>
 
                 <LinearLayout
@@ -67,6 +71,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
+                            android:id="@+id/isActiveStatus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:elevation="100dp"
@@ -91,21 +96,21 @@
                                 android:src="@drawable/dummy_img" />
                         </androidx.cardview.widget.CardView>
 
-                        <TextView
-                            android:id="@+id/expertRating"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/edittext_style"
-                            android:drawableStart="@drawable/ic_star"
-                            android:drawablePadding="5dp"
-                            android:padding="5dp"
-                            android:text="4.2"
-                            android:textColor="@color/yelllo"
-                            android:translationZ="5dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-                            app:layout_constraintStart_toStartOf="@+id/imageView3"
-                            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                            <TextView
+                                android:id="@+id/expertRating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edittext_style"
+                                android:drawableStart="@drawable/ic_star"
+                                android:drawablePadding="5dp"
+                                android:padding="5dp"
+                                android:text="4.2"
+                                android:textColor="@color/yelllo"
+                                android:translationZ="5dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                                app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                                app:layout_constraintStart_toStartOf="@+id/imageView3"
+                                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -300,6 +305,7 @@
             android:padding="2dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/connectBtn"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"

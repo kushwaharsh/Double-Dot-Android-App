@@ -25,7 +25,14 @@ class ExpertReviewActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initview()
+        listener()
 
+    }
+
+    private fun listener() {
+        binding.backBtn.setOnClickListener {
+            finish()
+        }
     }
 
     private fun initview() {

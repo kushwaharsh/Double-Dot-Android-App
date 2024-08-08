@@ -13,4 +13,8 @@ object KeyConstants {
     const val SIGN_UP_USER = "customer/register"
     const val GET_EXPERT_LIST = "customer/expert/list"
     const val GET_EXPERT_DETAILS = "customer/expert/detail"
+    const val GET_WALLET_TRANSACTION_DETAILS = "customer/wallet/detail"
+    const val ADD_AMOUNT_TO_WALLET = "customer/wallet/add_amount"
+    const val GET_WALLET_AMOUNT = "customer/wallet/amount"
+    const val EDIT_USER_PROFILE = "customer/update"
 }
