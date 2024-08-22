@@ -40,4 +40,8 @@ object HomeRepository : BaseRepository() {
     suspend fun logoutUser(token: String) = safeApiCall {
         ServiceHelper().getApi().logoutUser(token)
     }
+
+    suspend fun profileDetails(token: String) = safeApiCall {
+        ServiceHelper().getApi().profileDetails(token)
+    }
 }

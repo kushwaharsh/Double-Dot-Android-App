@@ -92,6 +92,10 @@ dependencies {
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     //renderScript for blur dialog effect
     implementation ("jp.wasabeef:blurry:4.0.0")
+    //google place Api dependency
+    implementation ("com.google.android.libraries.places:places:2.4.0")
+
+
 
 
 

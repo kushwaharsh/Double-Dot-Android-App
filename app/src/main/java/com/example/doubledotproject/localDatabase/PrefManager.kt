@@ -35,6 +35,7 @@ class PrefManager private constructor(private val context: Context){
             editor.putString(Enums.LoginUserData.toString(), json).apply()
         }
 
+
     var WalletCurrentData: String
         get() {
             val json = sharedPref.getString(Enums.WalletCurrentData.toString(), null)

@@ -24,6 +24,7 @@ class SignInMobOTPActivity : AppCompatActivity() {
     private val viewModel : AuthViewModel by viewModels()
     private var mobileNo: String = ""
     private var countDownTimer: CountDownTimer? = null
+    private var correctOTP : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,7 @@ class SignInMobOTPActivity : AppCompatActivity() {
                     ProgressBarUtils.hideProgressDialog()
                     binding.resendLayout.visibility = View.GONE
                     binding.timerLayout.visibility = View.VISIBLE
+                    correctOTP = it.value?.data?.otp.toString()
                     Toast.makeText(this , "Mobile Verification OTP : "+it.value?.data?.otp , Toast.LENGTH_LONG).show()
                     startCountdown()
                 }
@@ -63,13 +65,12 @@ class SignInMobOTPActivity : AppCompatActivity() {
         Toast.makeText(this , "Mobile verification Otp : " + responseData?.otp , Toast.LENGTH_LONG).show()
 
         binding.mobileOtpPinView.addTextChangedListener(object : TextWatcher {
-            val correctOtp = responseData?.otp
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s?.length == 6) {
                     val enteredOtp = s.toString()
-                    if (enteredOtp == responseData?.otp) {
+                    if (enteredOtp == correctOTP) {
 
                         when (responseData?.isExist){
                             true -> {
@@ -106,6 +107,7 @@ class SignInMobOTPActivity : AppCompatActivity() {
 
         binding.resendOtpBtn.setOnClickListener{
             viewModel.resendMobOtp(mobileNo.toLong())
+            binding.mobileOtpPinView.setText("")
         }
     }
 

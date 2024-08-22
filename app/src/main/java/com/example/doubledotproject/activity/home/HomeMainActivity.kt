@@ -209,4 +209,17 @@ class HomeMainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        drawerBinding.userNameTv.text = App.app.prefManager.logginUserData.fullName
+        drawerBinding.userPhoneNoTv.text = App.app.prefManager.logginUserData.phoneNumber.toString()
+        drawerBinding.phnCountryCodeTv.text =
+            App.app.prefManager.logginUserData.counterCode.toString()
+        Glide.with(this)
+            .load(App.app.prefManager.logginUserData.image)
+            .placeholder(R.drawable.dummy_avatar)
+            .error(R.drawable.dummy_avatar)
+            .into(drawerBinding.userProfileImg);
+    }
 }

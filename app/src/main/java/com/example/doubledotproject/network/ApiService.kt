@@ -8,6 +8,7 @@ import com.example.doubledotproject.apiResponse.GetExpertListResponse
 import com.example.doubledotproject.apiResponse.GetWalletAmount
 import com.example.doubledotproject.apiResponse.LoginData
 import com.example.doubledotproject.apiResponse.OTPResponse
+import com.example.doubledotproject.apiResponse.ProfileDetailsResponseModel
 import com.example.doubledotproject.apiResponse.StaticContentResponseModel
 import com.example.doubledotproject.apiResponse.WalletTransactionResponseModel
 import com.example.doubledotproject.utiles.KeyConstants
@@ -67,4 +68,7 @@ interface ApiService {
 
     @GET(KeyConstants.LOGOUT_USER)
     suspend fun logoutUser(@Header("Authorization") token: String) : AuthResponseModel?
+
+    @GET(KeyConstants.PROFILE_DETAILS)
+    suspend fun profileDetails(@Header("Authorization") token: String) : ProfileDetailsResponseModel?
 }

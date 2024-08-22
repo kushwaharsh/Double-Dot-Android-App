@@ -20,4 +20,5 @@ object KeyConstants {
     const val STATIC_CONTENT_DETAILS = "customer/static/detail"
     const val LOGOUT_USER = "customer/logout"
     const val DELETE_ACCOUNT_USER = "customer/delete"
+    const val PROFILE_DETAILS = "customer/list"
 }

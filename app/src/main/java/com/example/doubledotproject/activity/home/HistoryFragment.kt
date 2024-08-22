@@ -70,7 +70,6 @@ class HistoryFragment : Fragment() {
     }
 
     private fun initView() {
-        binding.userNameTV.text = App.app.prefManager.logginUserData.fullName
 
         if (App.app.prefManager.logginUserData.walletBalance == ""){
             binding.walletBalanceTV.text = "₹ ${0}"
@@ -83,5 +82,6 @@ class HistoryFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.getWalletAmount(App.app.prefManager.logginUserData.jwtToken)
+        binding.userNameTV.text = App.app.prefManager.logginUserData.fullName
     }
 }

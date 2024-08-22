@@ -11,6 +11,7 @@ import com.example.doubledotproject.apiResponse.ExpertDetailsResponse
 import com.example.doubledotproject.apiResponse.GetExpertListResponse
 import com.example.doubledotproject.apiResponse.GetWalletAmount
 import com.example.doubledotproject.apiResponse.OTPResponse
+import com.example.doubledotproject.apiResponse.ProfileDetailsResponseModel
 import com.example.doubledotproject.apiResponse.StaticContentResponseModel
 import com.example.doubledotproject.apiResponse.WalletTransactionResponseModel
 import com.example.doubledotproject.repository.HomeRepository
@@ -116,11 +117,20 @@ class HomeViewModel : ViewModel() {
     private val _logoutUserAccount : MutableLiveData<Resource<AuthResponseModel?>?> = MutableLiveData()
     val logoutUserAccount : LiveData<Resource<AuthResponseModel?>?>
         get() = _logoutUserAccount
-
     fun logoutUser(token: String){
         viewModelScope.launch {
             _logoutUserAccount.value = Resource.Loading
             _logoutUserAccount.value = HomeRepository.logoutUser(token)
+        }
+    }
+
+    private val _userProfileData : MutableLiveData<Resource<ProfileDetailsResponseModel?>?> = MutableLiveData()
+    val userProfileData : LiveData<Resource<ProfileDetailsResponseModel?>?>
+        get() = _userProfileData
+    fun profileDetails(token: String){
+        viewModelScope.launch {
+            _userProfileData.value = Resource.Loading
+            _userProfileData.value = HomeRepository.profileDetails(token)
         }
     }
 }

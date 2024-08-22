@@ -143,11 +143,12 @@ class HomeFragment : Fragment() {
 
         viewModel.getExpertData(App.app.prefManager.logginUserData.jwtToken)
 
-        binding.userNameTV.text = App.app.prefManager.logginUserData.fullName
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.getWalletAmount(App.app.prefManager.logginUserData.jwtToken)
+        binding.userNameTV.text = App.app.prefManager.logginUserData.fullName
     }
+
 }
